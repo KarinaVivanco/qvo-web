@@ -1,0 +1,183 @@
+ <!-- Desarrollado por Karina Vivanco — 2026 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Truck Conversion — QVO</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy-dark: #0d1f3c;
+    --navy:      #1a3a6b;
+    --blue:      #2060b0;
+    --blue-light:#4a90d9;
+    --bg:        #f4f7fc;
+    --white:     #ffffff;
+    --mid:       #2a3f60;
+    --muted:     #6a80a0;
+    --line:      #d0dcea;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--white); color: var(--navy-dark); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 200;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line); padding: 0 4rem;
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-brand { display: flex; flex-direction: row; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-brand img { height: 52px; width: auto; }
+  .nav-sub { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 400; border-left: 1px solid var(--line); padding-left: 14px; }
+  .nav-back { color: var(--mid); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.25s; display: flex; align-items: center; gap: 8px; }
+  .nav-back:hover { color: var(--blue); }
+  .nav-back::before { content: '←'; font-size: 16px; }
+
+  /* HERO BANNER */
+  .project-hero {
+    margin-top: 68px;
+    background: var(--navy-dark);
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,58,107,0.8), rgba(13,31,60,0.95));
+  }
+  .project-hero-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+  .project-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1rem; }
+  .project-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(32px, 5vw, 56px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+  .project-location { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* CONTENT */
+  .project-content { max-width: 1100px; margin: 0 auto; padding: 5rem 4rem; }
+  .content-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+
+  /* TEXT */
+  .project-text .intro { font-size: 17px; color: var(--mid); line-height: 1.85; margin-bottom: 2rem; font-weight: 400; }
+  .project-text p { font-size: 15px; color: var(--mid); line-height: 1.85; margin-bottom: 1.5rem; }
+
+  /* HIGHLIGHT STATS */
+  .stats-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 600; color: var(--navy-dark); margin: 2rem 0 1rem; letter-spacing: 1px; text-transform: uppercase; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 2rem; }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; padding: 1.2rem 1.2rem; background: var(--bg); border-left: 3px solid var(--blue-light); }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--blue); line-height: 1; }
+  .stat-label { font-size: 12.5px; color: var(--mid); line-height: 1.4; }
+
+  /* IMAGE */
+  .project-image-wrap { position: sticky; top: 100px; }
+  
+.project-image-frame {
+    width: 100%;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(13,31,60,0.12);
+  }
+  .project-image-frame img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .project-image-frame:hover img { transform: scale(1.15); }
+  .image-caption { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1rem; text-align: center; }
+
+  /* DIVIDER */
+  .divider { width: 50px; height: 3px; background: linear-gradient(90deg, var(--navy), var(--blue)); margin-bottom: 2rem; }
+
+  /* BACK BTN */
+  .back-section { text-align: center; padding: 3rem 0 5rem; border-top: 1px solid var(--line); margin: 0 4rem; }
+  .back-btn { display: inline-block; padding: 14px 44px; background: var(--navy-dark); color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: background 0.3s; }
+  .back-btn:hover { background: var(--blue); }
+
+  /* FOOTER */
+  footer { background: #080f1e; padding: 2rem 4rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(74,144,217,0.12); }
+  .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 7px; color: rgba(74,144,217,0.35); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="home.html" class="nav-brand">
+      <img src="logo-splash.png" alt="QVO Logo">
+      <span class="nav-sub">Quiroz Vivanco Operations SAC</span>
+    </a>
+    <a href="home.html#projects" class="nav-back">Back to Projects</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-inner">
+    <div class="project-tag">Ingeniería · Electrificación</div>
+    <h1 class="project-title">Basic Engineering Design for the<br>Conversion of Diesel Dump Trucks to Electric</h1>
+    <div class="project-location">⚡ Mining Earthmoving Fleet · Perú</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="project-content">
+  <div class="content-grid">
+
+    <!-- TEXT LEFT -->
+    <div class="project-text">
+      <div class="divider"></div>
+      <p class="intro">At the request of a company specializing in earthmoving for mining, with a large fleet of mining trucks, a basic engineering study was developed for converting this diesel fleet to electric.</p>
+
+      <p>The design philosophy in this case is based on the premise of harnessing electric motors to recover gravitational potential energy, given the frequent need to transport ore from the upper part of the mine to the lower part where the processing plant is located.</p>
+
+      <p>In this scenario, the truck, through its regenerative braking systems, charges the batteries, allowing it to return empty to the mine.</p>
+
+      <div class="stats-title">Key Results</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Fuel savings achievable in ideal cycle cases</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">30–40%</div>
+          <div class="stat-label">Average energy savings in typical operating conditions</div>
+        </div>
+      </div>
+
+      <p>By producing its own energy, the transportation cost is significantly reduced, making the company that owns this equipment highly competitive in the market — both in terms of cost and environmental impact, by reducing emissions.</p>
+    </div>
+
+    <!-- IMAGE RIGHT -->
+    <div class="project-image-wrap">
+      <!--
+        PARA AGREGAR LA FOTO:
+        Verifica que el archivo Proceso_Conversion_Volquete.png
+        esté en la misma carpeta QVO-Web
+      -->
+      <div class="project-image-frame">
+        <img src="tabla-conversion.png" alt="Diesel to Electric Truck Conversion Process">
+      </div>
+      <div class="image-caption">Conversion Process · Removed vs Installed Components</div>
+
+      <div class="project-image-frame" style="margin-top:2rem;">
+        <img src="motor-electric.png" alt="Scania electric motor and transmission module">
+      </div>
+      <div class="image-caption">Scania motor-electric + transmission module, which integrates permanent magnet motor and inverter (top box) in a single compact set</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BACK BUTTON -->
+<div class="back-section">
+  <a href="home.html#projects" class="back-btn">← Back to Projects</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">QVO</div>
+  <div class="footer-copy">© 2026 Quiroz Vivanco Operations SAC · All rights reserved</div>
+</footer>
+
+</body>
+</html>
