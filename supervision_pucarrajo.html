@@ -111,7 +111,7 @@
 <!-- HERO -->
 <div class="project-hero">
   <div class="project-hero-inner">
-    <div class="project-tag">Minería · Mine Closure</div>
+    <div class="project-tag">Mining · Mine Closure</div>
     <h1 class="project-title">Supervision of Pucarrajo<br>Mine Closure Work</h1>
     <div class="project-location">📍 Huascarán National Park — Perú · Since July 2024</div>
   </div>
@@ -165,7 +165,109 @@
     <div class="project-image-wrap">
       
       <div class="project-image-frame">
-        <img src="Imagen_Pucarrajo.png" alt="Supervisión Mina Pucarrajo">
+        <!--
+        <img src="Imagen_Pucarrajo.png" alt="Supervisión Mina Pucarrajo" usemap="#image-map">
+<map name="image-map">
+    <area target="_self" alt="Studies and Engineering" title="Studies and Engineering" href="galeria-studies.html" coords="307,316,78,246" shape="rect">
+    <area target="_self" alt="Mine Portals" title="Mine Portals" href="galeria-mine-portals.html" coords="241,134,62,110" shape="rect">
+    <area target="_self" alt="Chimneys" title="Chimneys" href="galeria-chimney.html" coords="153,97,20,63" shape="rect">
+    <area target="_self" alt="Oasis Tsf" title="Oasis Tsf" href="galeria-oasis.html" coords="32,479,150,514" shape="rect">
+    <area target="_self" alt="Wrf" title="Wrf" href="galeria-wrf.html" coords="176,41,268,75" shape="rect">
+    <area target="_self" alt="Open Pits" title="Open Pits" href="galeria-open-pit.html" coords="186,79,315,107" shape="rect">
+</map>
+-->
+
+<!--
+IMAGE MAP - EN STAND BY PARA RETOMAR DESPUES
+<img src="Imagen_Pucarrajo.png" alt="Supervisión Mina Pucarrajo" usemap="#image-map">
+<map name="image-map">
+    <area target="_self" alt="Studies and Engineering" title="Studies and Engineering" href="galeria-studies.html" coords="307,316,78,246" shape="rect">
+    <area target="_self" alt="Mine Portals" title="Mine Portals" href="galeria-mine-portals.html" coords="241,134,62,110" shape="rect">
+    <area target="_self" alt="Chimneys" title="Chimneys" href="galeria-chimney.html" coords="153,97,20,63" shape="rect">
+    <area target="_self" alt="Oasis Tsf" title="Oasis Tsf" href="galeria-oasis.html" coords="32,479,150,514" shape="rect">
+    <area target="_self" alt="Wrf" title="Wrf" href="galeria-wrf.html" coords="176,41,268,75" shape="rect">
+    <area target="_self" alt="Open Pits" title="Open Pits" href="galeria-open-pit.html" coords="186,79,315,107" shape="rect">
+</map>
+-->
+
+<!-- GALERÍA DE FOTOS -->
+<style>
+.gallery-item { text-align:center; cursor:pointer; }
+.gallery-img img { width:100%; height:130px; object-fit:cover; display:block; border-radius:4px; transition: opacity 0.3s; }
+.gallery-img img:hover { opacity: 0.85; }
+.gallery-label { font-size:10px; margin-top:5px; color:#6a80a0; letter-spacing:1px; text-transform:uppercase; }
+
+/* LIGHTBOX */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center; flex-direction:column; }
+.lightbox.active { display:flex; }
+.lightbox img { max-width:50%; max-height:60vh; object-fit:contain; border-radius:6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.lightbox-caption { color:#fff; font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-top:1rem; }
+.lightbox-close { position:absolute; top:1.5rem; right:2rem; color:#fff; font-size:32px; cursor:pointer; line-height:1; }
+.lightbox-close:hover { color:#4a90d9; }
+</style>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕</span>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+
+  <div class="gallery-item" onclick="openLightbox('base_line_studies.png','Base Line Studies')">
+    <div class="gallery-img"><img src="base_line_studies.png" alt="Base Line Studies"></div>
+    <p class="gallery-label">Base Line Studies</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('detailed_engineering.png','Detailed Engineering')">
+    <div class="gallery-img"><img src="detailed_engineering.png" alt="Detailed Engineering"></div>
+    <p class="gallery-label">Detailed Engineering</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_mine_portals.png','Closure of Mine Portals')">
+    <div class="gallery-img"><img src="closure_of_mine_portals.png" alt="Closure of Mine Portals"></div>
+    <p class="gallery-label">Closure of Mine Portals</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_mine_chimneys.png','Closure of Mine Chimneys')">
+    <div class="gallery-img"><img src="closure_of_mine_chimneys.png" alt="Closure of Mine Chimneys"></div>
+    <p class="gallery-label">Closure of Mine Chimneys</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_open_pits.png','Closure of Open Pits')">
+    <div class="gallery-img"><img src="closure_of_open_pits.png" alt="Closure of Open Pits"></div>
+    <p class="gallery-label">Closure of Open Pits</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_wrd.png','Closure of WRD')">
+    <div class="gallery-img"><img src="closure_of_wrd.png" alt="Closure of WRD"></div>
+    <p class="gallery-label">Closure of WRD</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_tsf.jpg','Closure of TSF')">
+    <div class="gallery-img"><img src="closure_of_tsf.jpg" alt="Closure of TSF"></div>
+    <p class="gallery-label">Closure of TSF</p>
+  </div>
+
+  <div class="gallery-item" onclick="openLightbox('closure_of_concentrator_plant.jpg','Closure of Concentrator Plant')">
+    <div class="gallery-img"><img src="closure_of_concentrator_plant.jpg" alt="Closure of Concentrator Plant"></div>
+    <p class="gallery-label">Closure of Concentrator Plant</p>
+  </div>
+
+</div>
+
+<script>
+function openLightbox(src, caption) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-caption').textContent = caption;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+</script>
+
       </div>
       <div class="image-caption">Pucarrajo Mining Unit · Huascarán National Park</div>
     </div>
